@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const Navbar = () => {
   return (
     <div className="flex items-center justify-between py-5">
@@ -7,31 +9,34 @@ const Navbar = () => {
       <div>
         <ul className="flex gap-4 text-sm">
           <li>
-            <a href="#">Hotels</a>
+            <Link href="#">Hotels</Link>
           </li>
           <li>
-            <a href="#">Flight</a>
+            <Link href="#">Flight</Link>
           </li>
           <li>
-            <a href="#">Trains</a>
+            <Link href="#">Trains</Link>
           </li>
           <li>
-            <a href="#">Cinemas</a>
+            <Link href="#">Cinemas</Link>
           </li>
         </ul>
       </div>
       <div>
         <div className="flex gap-2 text-sm">
-          <a href="#" className="bg-[#213555] py-1 px-4 rounded-sm text-white">
+          <Link
+            href="/login"
+            className="bg-[#213555] py-1 px-4 rounded-sm text-white"
+          >
             Login
-          </a>
-          <a href="#" className=" py-1 px-4">
+          </Link>
+          <Link href="/register" className=" py-1 px-4">
             Register
-          </a>
+          </Link>
         </div>
         <div className="hidden">
-          <a href="#">Profile</a>
-          <a href="#">Logout</a>
+          <Link href="#">Profile</Link>
+          <Link href="#">Logout</Link>
         </div>
       </div>
     </div>

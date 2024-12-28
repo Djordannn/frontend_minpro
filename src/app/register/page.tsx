@@ -8,10 +8,7 @@ import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 
 interface IRegisterProps {}
@@ -25,7 +22,7 @@ interface IRegisterValue {
 const Register: React.FC<IRegisterProps> = (props) => {
   return (
     <div className="h-[80vh] flex justify-center items-center">
-      <Card className="bg-[#eeee] px-5">
+      <Card className="px-5">
         <CardHeader>
           <h1 className="text-2xl font-bold">Register now</h1>
         </CardHeader>

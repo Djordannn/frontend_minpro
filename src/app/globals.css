@@ -4,7 +4,6 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  padding: 0 12%;
 }
 
 @layer base {
@@ -70,4 +69,11 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.main-dashboard {
+  background-image: url("../../public/img/town.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }

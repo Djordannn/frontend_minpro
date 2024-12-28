@@ -2,9 +2,11 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <div className="flex items-center justify-between py-5">
+    <div className="flex items-center justify-between py-5 px-4">
       <div>
-        <h2 className="font-bold text-xl">Logo</h2>
+        <a href="/" className="font-bold text-xl">
+          Logo
+        </a>
       </div>
       <div>
         <ul className="flex gap-4 text-sm">

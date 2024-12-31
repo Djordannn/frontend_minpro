@@ -37,6 +37,8 @@ const Dashboard = () => {
               <Image
                 src={imgCard}
                 className="w-full object-cover h-[280px] rounded-[4%]"
+                alt="img"
+                alt="img"
               ></Image>
             </CardHeader>
             <CardContent className="p-3 mt-4 flex justify-between items-center">
@@ -58,6 +60,7 @@ const Dashboard = () => {
               <Image
                 src={imgCard}
                 className="w-full object-cover h-[280px] rounded-[4%]"
+                alt="img"
               ></Image>
             </CardHeader>
             <CardContent className="p-3 mt-4 flex justify-between items-center">
@@ -79,6 +82,7 @@ const Dashboard = () => {
               <Image
                 src={imgCard}
                 className="w-full object-cover h-[280px] rounded-[4%]"
+                alt="img"
               ></Image>
             </CardHeader>
             <CardContent className="p-3 mt-4 flex justify-between items-center">
@@ -100,6 +104,7 @@ const Dashboard = () => {
               <Image
                 src={imgCard}
                 className="w-full object-cover h-[280px] rounded-[4%]"
+                alt="img"
               ></Image>
             </CardHeader>
             <CardContent className="p-3 mt-4 flex justify-between items-center">

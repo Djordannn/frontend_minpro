@@ -5,11 +5,8 @@ import FormInput from "../components/formInput";
 import { Formik, Form, FormikProps } from "formik";
 import { registerSchema } from "./registerSchema";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { callAPI } from "../config/axios";
 
 interface IRegisterProps {}
 
@@ -20,6 +17,23 @@ interface IRegisterValue {
 }
 
 const Register: React.FC<IRegisterProps> = (props) => {
+  const onRegister = async (
+    username: string,
+    email: string,
+    password: string
+  ) => {
+    try {
+      const res = await callAPI.post("/user/register", {
+        username,
+        email,
+        password,
+      });
+      alert(res.data.message);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="h-[80vh] flex justify-center items-center">
       <Card className="px-5">
@@ -28,16 +42,19 @@ const Register: React.FC<IRegisterProps> = (props) => {
         </CardHeader>
         <CardContent className="flex flex-col gap-2">
           <Formik
-            validationSchema={registerSchema}
             initialValues={{
               username: "",
               email: "",
               password: "",
             }}
+            validationSchema={registerSchema}
             onSubmit={(values, { resetForm }) => {
               console.log("Value from input formik :", values);
-              onRegister(values);
-              resetForm();
+              onRegister(values.username, values.email, values.password).then(
+                () => {
+                  resetForm();
+                }
+              );
             }}
           >
             {(props: FormikProps<IRegisterValue>) => {
@@ -53,7 +70,7 @@ const Register: React.FC<IRegisterProps> = (props) => {
                   />
                   <FormInput
                     id="email"
-                    type="email"
+                    type="text"
                     label="Email"
                     onChange={handleChange}
                     value={values.email}

@@ -1,6 +1,25 @@
+"use client";
 import Link from "next/link";
+import { callAPI } from "../config/axios";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
+  const route = useRouter();
+  const keepLogin = async () => {
+    try {
+      const token = localStorage.getItem("kroco");
+      if (token) {
+        const res = await callAPI.get("/user/keep-login", {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+      }
+
+      localStorage.setItem("kroco", resizeBy.data.token);
+      route.replace("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="flex items-center justify-between py-5 px-4">
       <div>
@@ -11,16 +30,16 @@ const Navbar = () => {
       <div>
         <ul className="flex gap-4 text-sm">
           <li>
-            <Link href="#">Hotels</Link>
+            <Link href="#">About Us</Link>
           </li>
           <li>
-            <Link href="#">Flight</Link>
+            <Link href="#">Tickets</Link>
           </li>
           <li>
-            <Link href="#">Trains</Link>
+            <Link href="#">Events</Link>
           </li>
           <li>
-            <Link href="#">Cinemas</Link>
+            <Link href="#">Service</Link>
           </li>
         </ul>
       </div>

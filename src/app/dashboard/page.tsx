@@ -6,12 +6,86 @@ import { FaArrowRight } from "react-icons/fa";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Dashboard = () => {
+  const data = [
+    {
+      title: "Ticket",
+      price: 150000,
+      img: imgCard,
+    },
+    {
+      title: "Ticket",
+      price: 150000,
+      img: imgCard,
+    },
+    {
+      title: "Ticket",
+      price: 150000,
+      img: imgCard,
+    },
+    {
+      title: "Ticket",
+      price: 150000,
+      img: imgCard,
+    },
+    {
+      title: "Ticket",
+      price: 150000,
+      img: imgCard,
+    },
+    {
+      title: "Ticket",
+      price: 150000,
+      img: imgCard,
+    },
+    {
+      title: "Ticket",
+      price: 150000,
+      img: imgCard,
+    },
+    {
+      title: "Ticket",
+      price: 150000,
+      img: imgCard,
+    },
+  ];
+
+  const newData = data.map((value, index) => {
+    return (
+      <Card className="h-[370px]" key={index}>
+        <CardHeader className="p-0">
+          <Image
+            src={value.img}
+            className="w-full object-cover h-[280px] rounded-[4%]"
+            alt="img"
+          ></Image>
+        </CardHeader>
+        <CardContent className="p-3 mt-4 flex justify-between items-center">
+          <div>
+            <CardTitle>{value.title}</CardTitle>
+            <p className="text-lg">
+              {value.price.toLocaleString("id", {
+                style: "currency",
+                currency: "IDR",
+              })}
+              / <span className="text-sm">person</span>
+            </p>
+          </div>
+          <div className="bg-black p-3 rounded-full">
+            <a href="#" className="text-white">
+              <FaArrowRight />
+            </a>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  });
+
   return (
     <div>
-      <div className="main-dashboard h-[60vh] mx-4 rounded-lg">
+      <div className="main-dashboard h-[70vh] mx-4 rounded-lg">
         <div className="p-[5rem] ">
-          <h2 className="text-7xl text-white">
-            Book Your Tickets Now
+          <h2 className="text-7xl font-medium text-white">
+            Book Your Tickets Now,
             <br /> Adventure Awaits!
           </h2>
           <p className="text-white mt-3">
@@ -26,102 +100,12 @@ const Dashboard = () => {
       {/* Card */}
       <div className="py-[54px] px-[5rem]">
         <div className="text-center mb-[2rem]">
-          <h2 className="text-5xl">Top values for you</h2>
+          <h2 className="text-5xl">Choose your tickets</h2>
           <p className="mt-4 text-[#bcbcbc]">
             Try variety of benefits when using our service
           </p>
         </div>
-        <div className="grid grid-cols-4 gap-6">
-          <Card className="h-[370px]">
-            <CardHeader className="p-0">
-              <Image
-                src={imgCard}
-                className="w-full object-cover h-[280px] rounded-[4%]"
-                alt="img"
-                alt="img"
-              ></Image>
-            </CardHeader>
-            <CardContent className="p-3 mt-4 flex justify-between items-center">
-              <div>
-                <CardTitle>Alone with nature</CardTitle>
-                <p className="text-lg">
-                  $100 / <span className="text-sm">person</span>
-                </p>
-              </div>
-              <div className="bg-black p-3 rounded-full">
-                <a href="#" className="text-white">
-                  <FaArrowRight />
-                </a>
-              </div>
-            </CardContent>
-          </Card>
-          <Card className="h-[370px]">
-            <CardHeader className="p-0">
-              <Image
-                src={imgCard}
-                className="w-full object-cover h-[280px] rounded-[4%]"
-                alt="img"
-              ></Image>
-            </CardHeader>
-            <CardContent className="p-3 mt-4 flex justify-between items-center">
-              <div>
-                <CardTitle>Alone with nature</CardTitle>
-                <p className="text-lg">
-                  $100 / <span className="text-sm">person</span>
-                </p>
-              </div>
-              <div className="bg-black p-3 rounded-full">
-                <a href="#" className="text-white">
-                  <FaArrowRight />
-                </a>
-              </div>
-            </CardContent>
-          </Card>
-          <Card className="h-[370px]">
-            <CardHeader className="p-0">
-              <Image
-                src={imgCard}
-                className="w-full object-cover h-[280px] rounded-[4%]"
-                alt="img"
-              ></Image>
-            </CardHeader>
-            <CardContent className="p-3 mt-4 flex justify-between items-center">
-              <div>
-                <CardTitle>Alone with nature</CardTitle>
-                <p className="text-lg">
-                  $100 / <span className="text-sm">person</span>
-                </p>
-              </div>
-              <div className="bg-black p-3 rounded-full">
-                <a href="#" className="text-white">
-                  <FaArrowRight />
-                </a>
-              </div>
-            </CardContent>
-          </Card>
-          <Card className="h-[370px]">
-            <CardHeader className="p-0">
-              <Image
-                src={imgCard}
-                className="w-full object-cover h-[280px] rounded-[4%]"
-                alt="img"
-              ></Image>
-            </CardHeader>
-            <CardContent className="p-3 mt-4 flex justify-between items-center">
-              <div>
-                <CardTitle>Alone with nature</CardTitle>
-                <p className="text-lg">
-                  $100 / <span className="text-sm">person</span>
-                </p>
-              </div>
-              <div className="bg-black p-3 rounded-full">
-                <a href="#" className="text-white">
-                  <FaArrowRight />
-                </a>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
+        <div className="grid grid-cols-4 gap-6">{newData}</div>
         <div className="text-center mt-[4rem]">
           <a href="#" className="border-2 border-black py-4 px-12 rounded-lg">
             See all

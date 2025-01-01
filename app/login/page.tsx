@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import FormInput from "../components/formInput";
+import FormInput from "../component/formInput";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { callAPI } from "../config/axios";
@@ -26,8 +26,8 @@ const Login: React.FC<ILoginProps> = (props) => {
     }
   };
   return (
-    <div className="flex justify-center items-center h-[80vh]">
-      <Card>
+    <div className="flex justify-center items-center h-[90vh]">
+      <Card className="shadow-lg">
         <CardHeader>
           <h1 className="text-2xl">Login now</h1>
         </CardHeader>

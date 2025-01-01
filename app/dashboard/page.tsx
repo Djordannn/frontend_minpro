@@ -1,10 +1,7 @@
-import town from "../../../public/img/town.jpg";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import imgCard from "../../../public/img/imgcard.jpg";
+import imgCard from "../../public/img/imgcard.jpg";
 import { FaArrowRight } from "react-icons/fa";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
 const Dashboard = () => {
   const data = [
     {
@@ -82,36 +79,7 @@ const Dashboard = () => {
 
   return (
     <div>
-      <div className="main-dashboard h-[70vh] mx-4 rounded-lg">
-        <div className="p-[5rem] ">
-          <h2 className="text-7xl font-medium text-white">
-            Book Your Tickets Now,
-            <br /> Adventure Awaits!
-          </h2>
-          <p className="text-white mt-3">
-            Book tickets quickly and easily, and get ready for your exciting
-            trip.
-          </p>
-          <Button className="bg-white text-black py-4 px-8 mt-8">
-            Book now
-          </Button>
-        </div>
-      </div>
-      {/* Card */}
-      <div className="py-[54px] px-[5rem]">
-        <div className="text-center mb-[2rem]">
-          <h2 className="text-5xl">Choose your tickets</h2>
-          <p className="mt-4 text-[#bcbcbc]">
-            Try variety of benefits when using our service
-          </p>
-        </div>
-        <div className="grid grid-cols-4 gap-6">{newData}</div>
-        <div className="text-center mt-[4rem]">
-          <a href="#" className="border-2 border-black py-4 px-12 rounded-lg">
-            See all
-          </a>
-        </div>
-      </div>
+      <div></div>
     </div>
   );
 };

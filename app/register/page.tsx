@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import FormInput from "../components/formInput";
+import FormInput from "../component/formInput";
 import { Formik, Form, FormikProps } from "formik";
 import { registerSchema } from "./registerSchema";
 import { Button } from "@/components/ui/button";
@@ -35,7 +35,7 @@ const Register: React.FC<IRegisterProps> = (props) => {
   };
 
   return (
-    <div className="h-[80vh] flex justify-center items-center">
+    <div className="h-[90vh] flex justify-center items-center shadow-lg">
       <Card className="px-5">
         <CardHeader>
           <h1 className="text-2xl font-bold">Register now</h1>

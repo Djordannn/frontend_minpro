@@ -11,6 +11,7 @@ import {
   Trophy,
   Music,
   Store,
+  LogIn,
 } from "lucide-react";
 import {
   Sidebar,
@@ -39,6 +40,7 @@ import {
 } from "@/components/ui/collapsible";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const AppSidebar = () => {
   const items = [
@@ -81,21 +83,33 @@ const AppSidebar = () => {
                   </Button>
                 </div>
                 <SidebarMenuButton className="flex justify-between items-center">
-                  <a href="#" className="flex items-center gap-2">
+                  <Link href="../dashboard" className="flex items-center gap-2">
+                    <ChartBarStacked />
+                    <span>Dashboard</span>
+                  </Link>
+                </SidebarMenuButton>
+                <SidebarMenuButton className="flex justify-between items-center">
+                  <Link
+                    href="./category/all"
+                    className="flex items-center gap-2"
+                  >
                     <ChartBarStacked />
                     <span>Category</span>
-                  </a>
+                  </Link>
                 </SidebarMenuButton>
                 <SidebarMenuSub className="mt-[-12px]">
                   <SidebarMenuSubItem>
                     {items.map((item: any) => (
                       <SidebarMenuSubButton key={item.title}>
-                        <a href={item.url} className="flex items-center gap-2">
+                        <Link
+                          href={item.url}
+                          className="flex items-center gap-2"
+                        >
                           <div className="text-sm">
                             <item.icon size={16} />
                           </div>
                           <span>{item.title}</span>
-                        </a>
+                        </Link>
                       </SidebarMenuSubButton>
                     ))}
                   </SidebarMenuSubItem>
@@ -103,10 +117,10 @@ const AppSidebar = () => {
               </SidebarMenuItem>
 
               <SidebarMenuButton className="flex justify-between items-center">
-                <a href="#" className="flex items-center gap-2">
+                <Link href="#" className="flex items-center gap-2">
                   <CalendarRange />
                   <span>Create Events</span>
-                </a>
+                </Link>
               </SidebarMenuButton>
             </SidebarMenu>
           </SidebarGroupContent>
@@ -115,6 +129,16 @@ const AppSidebar = () => {
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
+            <SidebarMenuButton className="flex justify-between items-center">
+              <Link href="../login">
+                <span>Login / Register</span>
+              </Link>
+              <div>
+                <LogIn className="text-2xl" />
+              </div>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          <SidebarMenuItem className="hidden">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton>

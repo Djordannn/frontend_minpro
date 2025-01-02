@@ -10,8 +10,10 @@ export const metadata: Metadata = {
   description: "Join to share your story",
 };
 
-const RegisterLayout: React.FunctionComponent<IRegisterLayout> = ({ children }) => {
-  return <div>{children}</div>;
+const RegisterLayout: React.FunctionComponent<IRegisterLayout> = ({
+  children,
+}) => {
+  return <div className="ml-[27rem]">{children}</div>;
 };
 
 export default RegisterLayout;

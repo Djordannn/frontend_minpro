@@ -1,85 +1,19 @@
-import Image from "next/image";
-import imgCard from "../../public/img/imgcard.jpg";
-import { FaArrowRight } from "react-icons/fa";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 const Dashboard = () => {
-  const data = [
-    {
-      title: "Ticket",
-      price: 150000,
-      img: imgCard,
-    },
-    {
-      title: "Ticket",
-      price: 150000,
-      img: imgCard,
-    },
-    {
-      title: "Ticket",
-      price: 150000,
-      img: imgCard,
-    },
-    {
-      title: "Ticket",
-      price: 150000,
-      img: imgCard,
-    },
-    {
-      title: "Ticket",
-      price: 150000,
-      img: imgCard,
-    },
-    {
-      title: "Ticket",
-      price: 150000,
-      img: imgCard,
-    },
-    {
-      title: "Ticket",
-      price: 150000,
-      img: imgCard,
-    },
-    {
-      title: "Ticket",
-      price: 150000,
-      img: imgCard,
-    },
-  ];
-
-  const newData = data.map((value, index) => {
-    return (
-      <Card className="h-[370px]" key={index}>
-        <CardHeader className="p-0">
-          <Image
-            src={value.img}
-            className="w-full object-cover h-[280px] rounded-[4%]"
-            alt="img"
-          ></Image>
-        </CardHeader>
-        <CardContent className="p-3 mt-4 flex justify-between items-center">
-          <div>
-            <CardTitle>{value.title}</CardTitle>
-            <p className="text-lg">
-              {value.price.toLocaleString("id", {
-                style: "currency",
-                currency: "IDR",
-              })}
-              / <span className="text-sm">person</span>
-            </p>
-          </div>
-          <div className="bg-black p-3 rounded-full">
-            <a href="#" className="text-white">
-              <FaArrowRight />
-            </a>
-          </div>
-        </CardContent>
-      </Card>
-    );
-  });
-
   return (
-    <div>
-      <div></div>
+    <div className="h-[90vh]">
+      <div className="text-center mt-[5rem]">
+        <h2 className="text-4xl font-medium">
+          Your Pass to Everything Awesome!
+        </h2>
+        <p className="px-[5rem] mt-5">
+          Get an unforgettable experience with tickets to the best events of the
+          year! From breathtaking music concerts, thrilling sporting events, to
+          inspiring seminars and vibrant cultural festivals—it's all here for
+          you. Be a part of moments filled with energy, laughter, and memories.
+          Find, book, and enjoy your favorite events with ease. A world of
+          entertainment, education, and creativity awaits—don't miss it!
+        </p>
+      </div>
     </div>
   );
 };

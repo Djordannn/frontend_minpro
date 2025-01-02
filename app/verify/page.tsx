@@ -1,11 +1,13 @@
 "use client";
 import React from "react";
+import { useRouter } from "next/navigation";
 import { callAPI } from "../config/axios";
 import { useSearchParams } from "next/navigation";
 
 type IVerifyProps = {};
 
 const Verify: React.FunctionComponent<IVerifyProps> = (props) => {
+  const route = useRouter();
   const query = useSearchParams();
   const handleVerify = async () => {
     try {
@@ -16,6 +18,7 @@ const Verify: React.FunctionComponent<IVerifyProps> = (props) => {
         },
       });
       alert(res.data.message);
+      route.replace("../dashboard");
     } catch (error) {
       console.log(error);
     }
@@ -26,7 +29,7 @@ const Verify: React.FunctionComponent<IVerifyProps> = (props) => {
   }, []);
   return (
     <div>
-      <p className="text-2xl text-center">Verify your account </p>
+      <p className="text-2xl text-center">Your account is verified</p>
     </div>
   );
 };

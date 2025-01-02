@@ -48,7 +48,7 @@ const FormInput: React.FC<IFormInput> = ({
             placeholder={placeholder}
             onChange={onChange}
             value={value}
-            className="border-2 border-black p-1 rounded-md"
+            className="border-2 border-black p-1 rounded-md w-full"
           />
           <button
             type="button"

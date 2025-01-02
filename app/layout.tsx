@@ -24,7 +24,10 @@ export default function RootLayout({
       <body className={`${poppins.className} antialiased`}>
         <SidebarProvider>
           <AppSidebar />
-          <main>{children}</main>
+          <main>
+            <SidebarTrigger className="md:hidden" />
+            {children}
+          </main>
         </SidebarProvider>
       </body>
     </html>

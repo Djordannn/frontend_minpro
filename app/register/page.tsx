@@ -38,7 +38,7 @@ const Register: React.FC<IRegisterProps> = (props) => {
     <div className="h-[90vh] flex justify-center items-center shadow-lg">
       <Card className="px-5">
         <CardHeader>
-          <h1 className="text-2xl font-bold">Register now</h1>
+          <h1 className="text-2xl font-medium">Register now</h1>
         </CardHeader>
         <CardContent className="flex flex-col gap-2">
           <Formik
@@ -50,11 +50,9 @@ const Register: React.FC<IRegisterProps> = (props) => {
             validationSchema={registerSchema}
             onSubmit={(values, { resetForm }) => {
               console.log("Value from input formik :", values);
-              onRegister(values.username, values.email, values.password).then(
-                () => {
-                  resetForm();
-                }
-              );
+              onRegister(values.username, values.email, values.password);
+
+              resetForm();
             }}
           >
             {(props: FormikProps<IRegisterValue>) => {
@@ -90,7 +88,7 @@ const Register: React.FC<IRegisterProps> = (props) => {
             }}
           </Formik>
           <p className="text-sm mt-3">
-            Already have an account? <a href="#">Login</a>
+            Already have an account? <a href="../login">Login</a>
           </p>
         </CardContent>
       </Card>

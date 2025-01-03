@@ -6,24 +6,24 @@ import { ArrowRight } from "lucide-react";
 import { callAPI } from "@/app/config/axios";
 import Link from "next/link";
 
-interface IAllProps {}
+interface ISportProps {}
 
-interface Ticket {
+interface Sport {
   id: number;
   title: string;
   img: string | null;
   price: number | null;
 }
 
-const AllPage: React.FunctionComponent<IAllProps> = () => {
-  const [tickets, setTickets] = useState<Ticket[]>([]);
+const SportPage: React.FunctionComponent<ISportProps> = () => {
+  const [sports, setSports] = useState<Sport[]>([]);
 
   useEffect(() => {
     const fetchTicket = async () => {
       try {
-        const response = await callAPI.get("/ticket/all-ticket");
+        const response = await callAPI.get("/ticket/sport");
         console.log(response.data);
-        setTickets(response.data.result);
+        setSports(response.data.result);
       } catch (error) {
         console.log(error);
       }
@@ -31,18 +31,15 @@ const AllPage: React.FunctionComponent<IAllProps> = () => {
 
     fetchTicket();
   }, []);
-  if (!tickets) {
-    return <p>Loading...</p>; // Tambahkan loading state
-  }
 
   return (
     <div className="p-5 grid grid-cols-4 gap-5">
-      {tickets.length > 0 ? (
-        tickets.map((value) => (
+      {sports.length > 0 ? (
+        sports.map((value) => (
           <div className="card bg-[#eeee] w-[255px] rounded-xl" key={value.id}>
             <div className="card-header">
               <Image
-                src={value.img ? `http://localhost:2440${value.img}` : imgCard}
+                src={value.img ? value.img : imgCard}
                 alt={value.title}
                 className="h-[250px] w-full object-cover rounded-xl"
                 width={255}
@@ -74,4 +71,4 @@ const AllPage: React.FunctionComponent<IAllProps> = () => {
   );
 };
 
-export default AllPage;
+export default SportPage;

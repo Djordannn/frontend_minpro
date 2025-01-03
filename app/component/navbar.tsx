@@ -4,26 +4,25 @@ import { callAPI } from "../config/axios";
 import { useRouter } from "next/navigation";
 
 const Navbar = () => {
-  const route = useRouter();
-  const keepLogin = async () => {
-    try {
-      const token = localStorage.getItem("kroco");
-      if (token) {
-        const res = await callAPI.get("/user/keep-login", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-      }
+  // const route = useRouter();
+  // const keepLogin = async () => {
+  //   try {
+  //     const token = localStorage.getItem("kroco");
+  //     if (token) {
+  //       const res = await callAPI.get("/user/keep-login", {
+  //         headers: { Authorization: `Bearer ${token}` },
+  //       });
+  //     }
 
-      localStorage.setItem("kroco", resizeBy.data.token);
-      route.replace("/");
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //     localStorage.setItem("kroco", resizeBy.data.token);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   return (
     <div className="flex items-center justify-between py-5 px-4">
       <div>
-        <a href="/" className="font-bold text-xl">
+        <a href="#" className="font-bold text-xl">
           Logo
         </a>
       </div>

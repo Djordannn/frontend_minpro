@@ -40,7 +40,6 @@ const FormInput: React.FC<IFormInput> = ({
         </label>
         <div className="relative">
           <input
-            type="text"
             id={id}
             name={id}
             ref={ref}

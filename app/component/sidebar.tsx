@@ -46,12 +46,12 @@ const AppSidebar = () => {
   const items = [
     {
       title: "All",
-      url: "#",
+      url: "../category/all",
       icon: GalleryHorizontalEnd,
     },
     {
       title: "Sport",
-      url: "#",
+      url: "../category/sport",
       icon: Trophy,
     },
     {
@@ -89,10 +89,7 @@ const AppSidebar = () => {
                   </Link>
                 </SidebarMenuButton>
                 <SidebarMenuButton className="flex justify-between items-center">
-                  <Link
-                    href="./category/all"
-                    className="flex items-center gap-2"
-                  >
+                  <Link href={items[0].url} className="flex items-center gap-2">
                     <ChartBarStacked />
                     <span>Category</span>
                   </Link>

@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import imgCard from "../../../public/img/imgcard.jpg";
-import { ShoppingCart } from "lucide-react";
 import { callAPI } from "@/app/config/axios";
 import Link from "next/link";
 import {
@@ -15,23 +14,23 @@ import {
 import InteractiveHoverButton from "@/components/ui/interactive-hover-button";
 import { Button } from "@/components/ui/button";
 
-interface IAllProps {}
+interface IMusicProps {}
 
-interface Ticket {
+interface Music {
   id: number;
   title: string;
   img: string | null;
   price: number | null;
 }
 
-const AllPage: React.FunctionComponent<IAllProps> = () => {
-  const [tickets, setTickets] = useState<Ticket[]>([]);
+const MusicPage: React.FunctionComponent<IMusicProps> = () => {
+  const [musics, setMusics] = useState<Music[]>([]);
 
   const fetchTicket = async () => {
     try {
-      const response = await callAPI.get("/ticket/all-ticket");
+      const response = await callAPI.get("/ticket/music");
       console.log(response.data);
-      setTickets(response.data.result);
+      setMusics(response.data.result);
     } catch (error) {
       console.log(error);
     }
@@ -41,14 +40,14 @@ const AllPage: React.FunctionComponent<IAllProps> = () => {
     fetchTicket();
   }, []);
 
-  if (!tickets) {
+  if (!musics) {
     return <p>Loading...</p>; // Tambahkan loading state
   }
 
   return (
     <div className="p-5 grid grid-cols-4 gap-5">
-      {tickets.length > 0 ? (
-        tickets.map((value) => (
+      {musics.length > 0 ? (
+        musics.map((value) => (
           <Card key={value.id} className="bg-[#FAFAFA] border-none">
             <CardHeader>
               <Image
@@ -84,4 +83,4 @@ const AllPage: React.FunctionComponent<IAllProps> = () => {
   );
 };
 
-export default AllPage;
+export default MusicPage;

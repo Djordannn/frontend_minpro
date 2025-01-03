@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import imgCard from "../../../public/img/imgcard.jpg";
-import { ShoppingCart } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { callAPI } from "@/app/config/axios";
 import Link from "next/link";
 import {
@@ -15,23 +15,23 @@ import {
 import InteractiveHoverButton from "@/components/ui/interactive-hover-button";
 import { Button } from "@/components/ui/button";
 
-interface IAllProps {}
+interface ISportProps {}
 
-interface Ticket {
+interface Sport {
   id: number;
   title: string;
   img: string | null;
   price: number | null;
 }
 
-const AllPage: React.FunctionComponent<IAllProps> = () => {
-  const [tickets, setTickets] = useState<Ticket[]>([]);
+const AllPage: React.FunctionComponent<ISportProps> = () => {
+  const [sports, setSports] = useState<Sport[]>([]);
 
   const fetchTicket = async () => {
     try {
-      const response = await callAPI.get("/ticket/all-ticket");
+      const response = await callAPI.get("/ticket/sport");
       console.log(response.data);
-      setTickets(response.data.result);
+      setSports(response.data.result);
     } catch (error) {
       console.log(error);
     }
@@ -41,14 +41,14 @@ const AllPage: React.FunctionComponent<IAllProps> = () => {
     fetchTicket();
   }, []);
 
-  if (!tickets) {
+  if (!sports) {
     return <p>Loading...</p>; // Tambahkan loading state
   }
 
   return (
     <div className="p-5 grid grid-cols-4 gap-5">
-      {tickets.length > 0 ? (
-        tickets.map((value) => (
+      {sports.length > 0 ? (
+        sports.map((value) => (
           <Card key={value.id} className="bg-[#FAFAFA] border-none">
             <CardHeader>
               <Image

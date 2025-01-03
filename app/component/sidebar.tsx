@@ -1,17 +1,18 @@
 "use client";
 
+import React from "react";
+import { useState, useEffect } from "react";
 import {
   CalendarRange,
-  GalleryVerticalEnd,
   Search,
   ChevronUp,
-  ChevronDown,
-  ChartBarStacked,
+  Tickets,
   GalleryHorizontalEnd,
   Trophy,
   Music,
   Store,
   LogIn,
+  Home,
 } from "lucide-react";
 import {
   Sidebar,
@@ -33,16 +34,15 @@ import {
   DropdownMenuItem,
   DropdownMenuContent,
 } from "@/components/ui/dropdown-menu";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
+
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import SparklesText from "@/components/ui/sparkles-text";
 
 const AppSidebar = () => {
+  const [user, setUser] = useState("");
+
   const items = [
     {
       title: "All",
@@ -56,12 +56,12 @@ const AppSidebar = () => {
     },
     {
       title: "Music Concert",
-      url: "#",
+      url: "../category/music",
       icon: Music,
     },
     {
       title: "Workshop",
-      url: "#",
+      url: "../category/workshop",
       icon: Store,
     },
   ];
@@ -70,50 +70,50 @@ const AppSidebar = () => {
     <Sidebar>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel className="text-2xl my-5">
-            Events Ticketing
+          <SidebarGroupLabel className="my-4">
+            <SparklesText text="Events Ticketing" className="text-2xl" />
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              <SidebarMenuItem className="flex flex-col gap-4">
+              <SidebarMenuItem className="flex flex-col gap-2">
                 <div className="flex gap-2">
                   <Input type="text" placeholder="Search" />
                   <Button type="submit">
                     <Search />
                   </Button>
                 </div>
-                <SidebarMenuButton className="flex justify-between items-center">
-                  <Link href="../dashboard" className="flex items-center gap-2">
-                    <ChartBarStacked />
+                <SidebarMenuButton>
+                  <Link
+                    href="../dashboard"
+                    className="mt-3 flex items-center gap-2"
+                  >
+                    <Home />
                     <span>Dashboard</span>
                   </Link>
                 </SidebarMenuButton>
-                <SidebarMenuButton className="flex justify-between items-center">
+                <SidebarMenuButton>
                   <Link href={items[0].url} className="flex items-center gap-2">
-                    <ChartBarStacked />
+                    <Tickets />
                     <span>Category</span>
                   </Link>
                 </SidebarMenuButton>
-                <SidebarMenuSub className="mt-[-12px]">
+                <SidebarMenuSub>
                   <SidebarMenuSubItem>
                     {items.map((item: any) => (
-                      <SidebarMenuSubButton key={item.title}>
-                        <Link
-                          href={item.url}
-                          className="flex items-center gap-2"
-                        >
+                      <Link href={item.url} key={item.title}>
+                        <SidebarMenuSubButton>
                           <div className="text-sm">
                             <item.icon size={16} />
                           </div>
                           <span>{item.title}</span>
-                        </Link>
-                      </SidebarMenuSubButton>
+                        </SidebarMenuSubButton>
+                      </Link>
                     ))}
                   </SidebarMenuSubItem>
                 </SidebarMenuSub>
               </SidebarMenuItem>
 
-              <SidebarMenuButton className="flex justify-between items-center">
+              <SidebarMenuButton>
                 <Link href="#" className="flex items-center gap-2">
                   <CalendarRange />
                   <span>Create Events</span>

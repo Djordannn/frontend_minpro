@@ -40,6 +40,11 @@ import Link from "next/link";
 import SparklesText from "@/components/ui/sparkles-text";
 
 const AppSidebar = () => {
+  const onLogout = () => {
+    localStorage.removeItem("dataUser");
+    window.location.href = "/";
+  };
+
   const items = [
     {
       title: "All",
@@ -74,16 +79,13 @@ const AppSidebar = () => {
             <SidebarMenu>
               <SidebarMenuItem className="flex flex-col gap-2">
                 <div className="flex gap-2">
-                  <Input type="text" placeholder="Search" />
+                  <Input type="text" placeholder="Search ticket" />
                   <Button type="submit">
                     <Search />
                   </Button>
                 </div>
                 <SidebarMenuButton>
-                  <Link
-                    href="../dashboard"
-                    className="mt-3 flex items-center gap-2"
-                  >
+                  <Link href="/" className="mt-3 flex items-center gap-2">
                     <Home />
                     <span>Dashboard</span>
                   </Link>
@@ -123,6 +125,9 @@ const AppSidebar = () => {
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
+            <SidebarMenuButton onClick={onLogout}>
+              <span>Logout</span>
+            </SidebarMenuButton>
             <SidebarMenuButton className="flex justify-between items-center">
               <Link href="../login">
                 <span>Login / Register</span>

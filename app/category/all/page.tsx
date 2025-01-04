@@ -80,7 +80,7 @@ const AllPage: React.FunctionComponent<IAllProps> = () => {
           </Card>
         ))
       ) : (
-        <Loading />
+        <p>Loading tickets...</p>
       )}
     </div>
   );

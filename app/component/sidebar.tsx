@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { useState, useEffect } from "react";
 import {
   CalendarRange,
   Search,
@@ -41,8 +40,6 @@ import Link from "next/link";
 import SparklesText from "@/components/ui/sparkles-text";
 
 const AppSidebar = () => {
-  const [user, setUser] = useState("");
-
   const items = [
     {
       title: "All",
@@ -99,7 +96,7 @@ const AppSidebar = () => {
                 </SidebarMenuButton>
                 <SidebarMenuSub>
                   <SidebarMenuSubItem>
-                    {items.map((item: any) => (
+                    {items.map((item) => (
                       <Link href={item.url} key={item.title}>
                         <SidebarMenuSubButton>
                           <div className="text-sm">
@@ -114,7 +111,7 @@ const AppSidebar = () => {
               </SidebarMenuItem>
 
               <SidebarMenuButton>
-                <Link href="#" className="flex items-center gap-2">
+                <Link href="../createEvent" className="flex items-center gap-2">
                   <CalendarRange />
                   <span>Create Events</span>
                 </Link>
@@ -135,6 +132,7 @@ const AppSidebar = () => {
               </div>
             </SidebarMenuButton>
           </SidebarMenuItem>
+
           <SidebarMenuItem className="hidden">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>

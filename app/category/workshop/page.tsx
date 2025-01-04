@@ -53,7 +53,7 @@ const AllPage: React.FunctionComponent<IWorkshopProps> = () => {
               <Image
                 src={value.img ? `http://localhost:2440${value.img}` : imgCard}
                 alt={value.title}
-                className="h-[100px] w-full object-cover rounded-xl"
+                className="h-[100px] w-[370px] object-cover rounded-xl"
                 width={255}
                 height={250}
               />

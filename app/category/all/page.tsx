@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/card";
 import InteractiveHoverButton from "@/components/ui/interactive-hover-button";
 import { Button } from "@/components/ui/button";
+import Loading from "../../component/loading";
 
 interface IAllProps {}
 
@@ -70,6 +71,7 @@ const AllPage: React.FunctionComponent<IAllProps> = () => {
                       })
                     : "Price not available"}
                 </p>
+                <p>{value.date}</p>
               </div>
             </CardContent>
             <CardFooter>
@@ -78,7 +80,7 @@ const AllPage: React.FunctionComponent<IAllProps> = () => {
           </Card>
         ))
       ) : (
-        <p>Loading tickets...</p>
+        <Loading />
       )}
     </div>
   );

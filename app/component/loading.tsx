@@ -1,13 +1,21 @@
-import * as React from "react";
+import React from "react";
+import { useState, useEffect } from "react";
+import { Suspense } from "react";
 import { Progress } from "@/components/ui/progress";
+const Loading = () => {
+  const [progress, setProgress] = useState(13);
 
-export function ProgressDemo() {
-  const [progress, setProgress] = React.useState(13);
-
-  React.useEffect(() => {
-    const timer = setTimeout(() => setProgress(66), 500);
+  useEffect(() => {
+    const timer = setTimeout(() => setProgress(66), 2000);
     return () => clearTimeout(timer);
   }, []);
+  return (
+    <section>
+      <Suspense fallback={<p>Loading...</p>}>
+        <Progress value={progress} className="w-[60%]" />
+      </Suspense>
+    </section>
+  );
+};
 
-  return <Progress value={progress} className="w-[60%]" />;
-}
+export default Loading;

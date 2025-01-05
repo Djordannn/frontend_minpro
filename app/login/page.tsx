@@ -33,7 +33,7 @@ const Register: React.FC<IRegisterProps> = (props) => {
   };
 
   return (
-    <div className="flex justify-center items-center">
+    <div className="h-[90vh] flex justify-center items-center">
       <Card className="px-5">
         <CardHeader>
           <h1 className="text-2xl font-medium">Login now</h1>

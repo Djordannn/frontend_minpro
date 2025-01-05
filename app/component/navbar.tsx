@@ -43,7 +43,7 @@ const Navbar = () => {
       </div>
       <div>
         <NavigationMenu>
-          <Link href="./ticket" className={navigationMenuTriggerStyle()}>
+          <Link href="/ticket" className={navigationMenuTriggerStyle()}>
             Ticket
           </Link>
           <Link href="/" className={navigationMenuTriggerStyle()}>
@@ -75,7 +75,7 @@ const Navbar = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 <DropdownMenuItem>
-                  <span>Account</span>
+                  <Link href="/account">Account</Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem>
                   <span onClick={onLogout}>Sign out</span>

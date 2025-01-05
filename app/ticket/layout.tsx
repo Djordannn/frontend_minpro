@@ -18,7 +18,7 @@ export default function ProductLayout({ children }: ProductLayoutProps) {
       <div className="flex mt-4 gap-5">
         <div className="w-[30%]">
           <div className="flex items-center gap-2">
-            <Input type="text" />
+            <Input type="text" placeholder="Search ticket" />
             <Button>
               <Search />
             </Button>

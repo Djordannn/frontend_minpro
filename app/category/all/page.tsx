@@ -2,9 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import imgCard from "../../../public/img/imgcard.jpg";
-import { ShoppingCart } from "lucide-react";
 import { callAPI } from "@/app/config/axios";
-import Link from "next/link";
 import {
   Card,
   CardContent,
@@ -42,15 +40,11 @@ const AllPage: React.FunctionComponent<IAllProps> = () => {
     fetchTicket();
   }, []);
 
-  if (!tickets) {
-    return <p>Loading...</p>; // Tambahkan loading state
-  }
-
   return (
-    <div className="p-5 grid grid-cols-4 gap-5">
+    <div className="px-[15%] mt-8 grid grid-cols-3 gap-5">
       {tickets.length > 0 ? (
         tickets.map((value) => (
-          <Card key={value.id} className="bg-[#FAFAFA] border-none">
+          <Card key={value.id} className="bg-[#FAFAFA]">
             <CardHeader>
               <Image
                 src={value.img ? `http://localhost:2440${value.img}` : imgCard}

@@ -48,7 +48,7 @@ const MusicPage: React.FunctionComponent<IMusicProps> = () => {
     <div className="p-5 grid grid-cols-4 gap-5">
       {musics.length > 0 ? (
         musics.map((value) => (
-          <Card key={value.id} className="bg-[#FAFAFA] border-none">
+          <Card key={value.id} className="bg-[#FAFAFA]">
             <CardHeader>
               <Image
                 src={value.img ? `http://localhost:2440${value.img}` : imgCard}

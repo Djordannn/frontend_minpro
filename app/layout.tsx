@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import AppSidebar from "./component/sidebar";
+import Navbar from "./component/navbar";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -21,14 +20,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} antialiased`}>
-        <SidebarProvider>
-          <AppSidebar />
-          <main>
-            <SidebarTrigger className="md:hidden" />
-            {children}
-          </main>
-        </SidebarProvider>
+      <body className={`${poppins.className} antialiased mx-[12%]`}>
+        <main>
+          <Navbar />
+          {children}
+        </main>
       </body>
     </html>
   );

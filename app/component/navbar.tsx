@@ -1,62 +1,88 @@
 "use client";
+
+import * as React from "react";
 import Link from "next/link";
 import { callAPI } from "../config/axios";
 import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import {
+  NavigationMenu,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+import {
+  NavigationMenuItem,
+  NavigationMenuLink,
+} from "@/components/ui/navigation-menu";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+  DropdownMenuItem,
+} from "@/components/ui/dropdown-menu";
+import SparklesText from "@/components/ui/sparkles-text";
+import { ChevronDown } from "lucide-react";
 
 const Navbar = () => {
-  // const route = useRouter();
-  // const keepLogin = async () => {
-  //   try {
-  //     const token = localStorage.getItem("kroco");
-  //     if (token) {
-  //       const res = await callAPI.get("/user/keep-login", {
-  //         headers: { Authorization: `Bearer ${token}` },
-  //       });
-  //     }
+  const [user, setUser] = React.useState<string>("");
 
-  //     localStorage.setItem("kroco", resizeBy.data.token);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const onLogout = () => {
+    localStorage.removeItem("dataUser");
+  };
+
+  React.useEffect(() => {
+    const getUser = localStorage.getItem("dataUser");
+    setUser(getUser);
+  });
+
   return (
-    <div className="flex items-center justify-between py-5 px-4">
-      <div>
-        <a href="#" className="font-bold text-xl">
-          Logo
-        </a>
+    <div className="flex items-center justify-between py-5">
+      <div className="pt-1">
+        <Link href="/" className="font-bold text-xl">
+          <SparklesText text="Events Ticketing" className="text-lg" />
+        </Link>
       </div>
       <div>
-        <ul className="flex gap-4 text-sm">
-          <li>
-            <Link href="#">About Us</Link>
-          </li>
-          <li>
-            <Link href="#">Tickets</Link>
-          </li>
-          <li>
-            <Link href="#">Events</Link>
-          </li>
-          <li>
-            <Link href="#">Service</Link>
-          </li>
-        </ul>
+        <NavigationMenu>
+          <Link href="./ticket" className={navigationMenuTriggerStyle()}>
+            Ticket
+          </Link>
+          <Link href="/" className={navigationMenuTriggerStyle()}>
+            About Us
+          </Link>
+          <Link href="/" className={navigationMenuTriggerStyle()}>
+            Service
+          </Link>
+        </NavigationMenu>
       </div>
       <div>
-        <div className="flex gap-2 text-sm">
-          <Link
-            href="/login"
-            className="bg-[#213555] py-1 px-4 rounded-sm text-white"
-          >
-            Login
-          </Link>
-          <Link href="/register" className=" py-1 px-4">
-            Register
-          </Link>
-        </div>
-        <div className="hidden">
-          <Link href="#">Profile</Link>
-          <Link href="#">Logout</Link>
+        <div className="flex items-center text-sm">
+          {!user ? (
+            <div>
+              <Link href="/login">
+                <Button>Login</Button>
+              </Link>
+              <Link href="/register" className="ml-2">
+                <Button variant="outline">Register</Button>
+              </Link>
+            </div>
+          ) : (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button>
+                  <p> Username</p>
+                  <ChevronDown className="ml-auto" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem>
+                  <span>Account</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <span onClick={onLogout}>Sign out</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          )}
         </div>
       </div>
     </div>

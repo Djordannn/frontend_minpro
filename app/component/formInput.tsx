@@ -1,4 +1,5 @@
 "use client";
+import { Select } from "@radix-ui/react-select";
 import React, { useState } from "react";
 import { LuEye } from "react-icons/lu";
 import { LuEyeClosed } from "react-icons/lu";
@@ -35,7 +36,7 @@ const FormInput: React.FC<IFormInput> = ({
 
     return (
       <div className="flex flex-col">
-        <label htmlFor="" className="font-semibold mt-2">
+        <label htmlFor="" className="font-medium mt-2">
           {label}
         </label>
         <div className="relative">
@@ -59,10 +60,28 @@ const FormInput: React.FC<IFormInput> = ({
         </div>
       </div>
     );
+  } else if (type === "file") {
+    return (
+      <div className="flex flex-col w-full">
+        <label htmlFor="" className="font-medium mt-2">
+          {label}
+        </label>
+        <input
+          type="file"
+          id={id}
+          name={id}
+          ref={ref}
+          placeholder={placeholder}
+          onChange={onChange}
+          value={value}
+          className="border-2 border-black p-1 rounded-md"
+        />
+      </div>
+    );
   }
   return (
     <div className="flex flex-col w-full">
-      <label htmlFor="" className="font-semibold mt-2">
+      <label htmlFor="" className="font-medium mt-2">
         {label}
       </label>
       <input

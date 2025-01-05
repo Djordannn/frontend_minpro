@@ -24,7 +24,7 @@ const Register: React.FC<IRegisterProps> = (props) => {
         email,
         password,
       });
-      alert(res.data.message);
+      alert(res.data.email);
       localStorage.setItem("dataUser", res.data.token);
       route.replace("/");
     } catch (error) {
@@ -33,7 +33,7 @@ const Register: React.FC<IRegisterProps> = (props) => {
   };
 
   return (
-    <div className="h-[90vh] flex justify-center items-center">
+    <div className="flex justify-center items-center">
       <Card className="px-5">
         <CardHeader>
           <h1 className="text-2xl font-medium">Login now</h1>

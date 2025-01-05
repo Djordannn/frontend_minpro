@@ -40,20 +40,16 @@ const AllPage: React.FunctionComponent<IWorkshopProps> = () => {
     fetchTicket();
   }, []);
 
-  if (!workshops) {
-    return <p>Loading...</p>; // Tambahkan loading state
-  }
-
   return (
     <div className="p-5 grid grid-cols-4 gap-5">
       {workshops.length > 0 ? (
         workshops.map((value) => (
-          <Card key={value.id} className="bg-[#FAFAFA] border-none">
+          <Card key={value.id} className="bg-[#FAFAFA]">
             <CardHeader>
               <Image
                 src={value.img ? `http://localhost:2440${value.img}` : imgCard}
                 alt={value.title}
-                className="h-[100px] w-[370px] object-cover rounded-xl"
+                className="h-[100px] w-full object-cover rounded-xl"
                 width={255}
                 height={250}
               />

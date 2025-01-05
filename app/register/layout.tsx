@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const RegisterLayout: React.FunctionComponent<IRegisterLayout> = ({
   children,
 }) => {
-  return <div className="ml-[27rem]">{children}</div>;
+  return <div>{children}</div>;
 };
 
 export default RegisterLayout;

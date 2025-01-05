@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 const LoginLayout: React.FunctionComponent<ILogin> = ({ children }) => {
-  return <div className="ml-[26rem]">{children}</div>;
+  return <div>{children}</div>;
 };
 
 export default LoginLayout;

@@ -41,20 +41,16 @@ const AllPage: React.FunctionComponent<ISportProps> = () => {
     fetchTicket();
   }, []);
 
-  if (!sports) {
-    return <p>Loading...</p>; // Tambahkan loading state
-  }
-
   return (
     <div className="p-5 grid grid-cols-4 gap-5">
       {sports.length > 0 ? (
         sports.map((value) => (
-          <Card key={value.id} className="bg-[#FAFAFA] border-none">
+          <Card key={value.id} className="bg-[#FAFAFA]">
             <CardHeader>
               <Image
                 src={value.img ? `http://localhost:2440${value.img}` : imgCard}
                 alt={value.title}
-                className="h-[100px] w-[360px] object-cover rounded-xl"
+                className="h-[100px] w-[180px] object-cover rounded-xl"
                 width={255}
                 height={250}
               />

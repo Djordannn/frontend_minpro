@@ -8,6 +8,8 @@ import { loginSchema } from "./loginSchema";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { callAPI } from "../config/axios";
+import { useAppDispatch } from "@/lib/redux/hooks";
+import { setSignIn } from "@/lib/redux/features/userSlice";
 
 interface IRegisterProps {}
 
@@ -18,6 +20,7 @@ interface IRegisterValue {
 
 const Register: React.FC<IRegisterProps> = (props) => {
   const route = useRouter();
+  const dispatch = useAppDispatch();
   const onLogin = async (email: string, password: string) => {
     try {
       const res = await callAPI.post("/user/login", {
@@ -25,6 +28,7 @@ const Register: React.FC<IRegisterProps> = (props) => {
         password,
       });
       alert(res.data.email);
+      dispatch(setSignIn({ ...res.data, isAuth: true }));
       localStorage.setItem("dataUser", res.data.token);
       route.replace("/");
     } catch (error) {
@@ -33,7 +37,7 @@ const Register: React.FC<IRegisterProps> = (props) => {
   };
 
   return (
-    <div className="h-[90vh] flex justify-center items-center">
+    <div className="h-[80vh] flex justify-center items-center">
       <Card className="px-5">
         <CardHeader>
           <h1 className="text-2xl font-medium">Login now</h1>

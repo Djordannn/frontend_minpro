@@ -12,7 +12,7 @@ import {
 import Image from "next/image";
 import { callAPI } from "../config/axios";
 import { Button } from "@/components/ui/button";
-
+import Link from "next/link";
 interface Ticket {
   id: string;
   img: string;
@@ -37,10 +37,10 @@ const page = () => {
   }, []);
 
   return (
-    <div className="grid grid-cols-3 gap-3">
+    <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
       {data.map((value) => (
         <Card className="rounded-none" key={value.id}>
-          <CardHeader className="p-0 mb-6">
+          <CardHeader className="p-0">
             <Image
               src={`http://localhost:2440${value.img}`}
               alt="img"
@@ -49,16 +49,19 @@ const page = () => {
               className="h-[150px] object-cover"
             />
           </CardHeader>
-          <CardContent>
-            <CardTitle>{value.title}</CardTitle>
-            <CardDescription>
+          <CardContent className="p-3">
+            <CardTitle className="text-md md:text-lg">
+              <Link href={`/ticket/${value.title}`}>{value.title}</Link>
+            </CardTitle>
+            <p className="text-md">
               {value.price.toLocaleString("id-ID", {
                 style: "currency",
                 currency: "IDR",
               })}
-            </CardDescription>
+            </p>
+            <CardDescription>{value.category}</CardDescription>
           </CardContent>
-          <CardFooter>
+          <CardFooter className="-mt-2 p-3 md:p-6">
             <Button className="w-full">Buy ticket</Button>
           </CardFooter>
         </Card>

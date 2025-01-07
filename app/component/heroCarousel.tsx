@@ -4,7 +4,6 @@ import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
 
-import { Card, CardHeader } from "@/components/ui/card";
 import {
   Carousel,
   CarouselContent,
@@ -17,7 +16,7 @@ import weekend from "../../public/img/carfreeday.jpg";
 
 const HeroCarousel = () => {
   const plugin = React.useRef(
-    Autoplay({ delay: 4000, stopOnInteraction: true })
+    Autoplay({ delay: 4000, stopOnInteraction: true }),
   );
 
   const cardData = [
@@ -45,11 +44,13 @@ const HeroCarousel = () => {
       <CarouselContent>
         {cardData.map((value, index) => (
           <CarouselItem key={index}>
-            <Card>
-              <CardHeader className="h-[300px] p-0 object-cover object-bottom">
-                <Image src={value.img} alt="img" className="w-full " />
-              </CardHeader>
-            </Card>
+            <div className="">
+              <Image
+                src={value.img}
+                alt="img"
+                className="aspect-[12/6] w-full object-cover lg:aspect-[16/4]"
+              />
+            </div>
           </CarouselItem>
         ))}
       </CarouselContent>

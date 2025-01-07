@@ -44,24 +44,28 @@ const Home = () => {
   return (
     <div>
       <HeroCarousel />
-      <div className="text-2xl font-medium mt-5">
-        <h2>Recommended for you</h2>
+      <div className="mt-2 text-2xl font-medium lg:mt-5">
+        <h2 className="lg:text-wxl text-lg">Recommended for you</h2>
       </div>
-      <div className="py-[24px] grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 gap-4 py-[12px] lg:grid-cols-3 lg:py-[24px]">
         {cardData.map((value) => (
           <Card key={value.title} className="rounded-none">
-            <CardHeader className="p-0 mb-6">
+            <CardHeader className="p-0 md:mb-6">
               <Image
                 src={value.img}
                 alt="img"
-                className="h-[200px] object-cover"
+                className="h-[170px] object-cover md:h-[200px]"
               />
             </CardHeader>
-            <CardContent>
-              <CardTitle>{value.title}</CardTitle>
-              <CardDescription>{value.description}</CardDescription>
+            <CardContent className="p-3 md:p-6">
+              <CardTitle className="text-md font-medium">
+                {value.title}
+              </CardTitle>
+              <CardDescription className="text-sm">
+                {value.description}
+              </CardDescription>
             </CardContent>
-            <CardFooter>
+            <CardFooter className="-mt-3 p-3 md:p-6">
               <CardDescription>{value.category}</CardDescription>
             </CardFooter>
           </Card>

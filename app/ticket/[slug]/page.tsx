@@ -1,19 +1,19 @@
 "use client";
 
-import React from "react";
+import * as React from "react";
+import { callAPI } from "@/app/config/axios";
 import {
   Card,
-  CardHeader,
   CardContent,
-  CardTitle,
   CardDescription,
   CardFooter,
+  CardHeader,
+  CardTitle,
 } from "@/components/ui/card";
-import Image from "next/image";
-import { callAPI } from "../config/axios";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import Link from "next/link";
-import HeroCarousel from "../component/heroCarousel";
+import HeroCarousel from "@/app/component/heroCarousel";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import {
@@ -23,27 +23,25 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 
-interface Ticket {
-  id: string;
-  img: string;
-  title: string;
-  price: string;
+interface ICategorProps {
+  params: Promise<{ slug: string }>;
 }
 
-const TicketPage = () => {
-  const [data, setdata] = React.useState<Ticket[]>([]);
+const CategoryTicket: React.FunctionComponent<ICategorProps> = ({ params }) => {
+  const [category, setCategory] = React.useState<any>([]);
 
-  const fetchTicket = async () => {
+  const getCategory = async (): Promise<void> => {
     try {
-      const res = await callAPI.get("/ticket/all-ticket");
-      setdata(res.data.result);
+      const slug = (await params).slug;
+      const res = await callAPI.get(`/ticket/category-ticket/${slug}`);
+      setCategory(res.data.result);
     } catch (error) {
       console.log(error);
     }
   };
 
   React.useEffect(() => {
-    fetchTicket();
+    getCategory();
   }, []);
 
   return (
@@ -100,7 +98,7 @@ const TicketPage = () => {
         <div className="w-full lg:w-[70%]">
           {" "}
           <div className="grid grid-cols-2 gap-3 md:grid-cols-3">
-            {data.map((value) => (
+            {category.map((value) => (
               <Card className="rounded-none" key={value.id}>
                 <CardHeader className="p-0">
                   <Image
@@ -135,4 +133,4 @@ const TicketPage = () => {
   );
 };
 
-export default TicketPage;
+export default CategoryTicket;

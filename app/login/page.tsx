@@ -8,6 +8,8 @@ import { loginSchema } from "./loginSchema";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { callAPI } from "../config/axios";
+import { useAppDispatch } from "@/lib/redux/hooks";
+import { setSignIn } from "@/lib/redux/features/userSlice";
 
 interface IRegisterProps {}
 
@@ -18,6 +20,7 @@ interface IRegisterValue {
 
 const Register: React.FC<IRegisterProps> = (props) => {
   const route = useRouter();
+  const dispatch = useAppDispatch();
   const onLogin = async (email: string, password: string) => {
     try {
       const res = await callAPI.post("/user/login", {
@@ -25,7 +28,8 @@ const Register: React.FC<IRegisterProps> = (props) => {
         password,
       });
       alert(res.data.email);
-      localStorage.setItem("dataUser", res.data.token);
+      dispatch(setSignIn({ ...res.data, isAuth: true }));
+      localStorage.setItem("token", res.data.token);
       route.replace("/");
     } catch (error) {
       console.log(error);
@@ -33,8 +37,8 @@ const Register: React.FC<IRegisterProps> = (props) => {
   };
 
   return (
-    <div className="h-[90vh] flex justify-center items-center">
-      <Card className="px-5">
+    <div className="flex h-[80vh] items-center justify-center">
+      <Card className="lg:px-5">
         <CardHeader>
           <h1 className="text-2xl font-medium">Login now</h1>
         </CardHeader>
@@ -77,7 +81,7 @@ const Register: React.FC<IRegisterProps> = (props) => {
               );
             }}
           </Formik>
-          <p className="text-sm mt-3">
+          <p className="mt-3 text-sm">
             Don't have an account? <a href="../register">Register</a>
           </p>
         </CardContent>

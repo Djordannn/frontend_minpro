@@ -36,7 +36,7 @@ const FormInput: React.FC<IFormInput> = ({
 
     return (
       <div className="flex flex-col">
-        <label htmlFor="" className="font-medium mt-2">
+        <label htmlFor="" className="mt-2 font-medium">
           {label}
         </label>
         <div className="relative">
@@ -48,11 +48,11 @@ const FormInput: React.FC<IFormInput> = ({
             placeholder={placeholder}
             onChange={onChange}
             value={value}
-            className="border-2 border-black p-1 rounded-md w-full"
+            className="w-full rounded-md border-2 border-black p-1"
           />
           <button
             type="button"
-            className="absolute right-1 top-1 w-8 p-1 rounded-sm border"
+            className="absolute right-1 top-1 w-8 rounded-sm border p-1"
             onClick={() => setVisible(!visible)}
           >
             {icon}
@@ -62,8 +62,8 @@ const FormInput: React.FC<IFormInput> = ({
     );
   } else if (type === "file") {
     return (
-      <div className="flex flex-col w-full">
-        <label htmlFor="" className="font-medium mt-2">
+      <div className="flex w-full flex-col">
+        <label htmlFor="" className="mt-2 font-medium">
           {label}
         </label>
         <input
@@ -74,14 +74,14 @@ const FormInput: React.FC<IFormInput> = ({
           placeholder={placeholder}
           onChange={onChange}
           value={value}
-          className="border-2 border-black p-1 rounded-md"
+          className="rounded-md border-2 border-black p-1"
         />
       </div>
     );
   }
   return (
-    <div className="flex flex-col w-full">
-      <label htmlFor="" className="font-medium mt-2">
+    <div className="flex w-full flex-col">
+      <label htmlFor="" className="mt-2 font-medium">
         {label}
       </label>
       <input
@@ -92,7 +92,7 @@ const FormInput: React.FC<IFormInput> = ({
         placeholder={placeholder}
         onChange={onChange}
         value={value}
-        className="border-2 border-black p-1 rounded-md"
+        className="rounded-md border-2 border-black p-1"
       />
     </div>
   );

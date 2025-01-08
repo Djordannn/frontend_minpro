@@ -29,7 +29,7 @@ const Register: React.FC<IRegisterProps> = (props) => {
       });
       alert(res.data.email);
       dispatch(setSignIn({ ...res.data, isAuth: true }));
-      localStorage.setItem("dataUser", res.data.token);
+      localStorage.setItem("token", res.data.token);
       route.replace("/");
     } catch (error) {
       console.log(error);
@@ -37,8 +37,8 @@ const Register: React.FC<IRegisterProps> = (props) => {
   };
 
   return (
-    <div className="h-[80vh] flex justify-center items-center">
-      <Card className="px-5">
+    <div className="flex h-[80vh] items-center justify-center">
+      <Card className="lg:px-5">
         <CardHeader>
           <h1 className="text-2xl font-medium">Login now</h1>
         </CardHeader>
@@ -81,7 +81,7 @@ const Register: React.FC<IRegisterProps> = (props) => {
               );
             }}
           </Formik>
-          <p className="text-sm mt-3">
+          <p className="mt-3 text-sm">
             Don't have an account? <a href="../register">Register</a>
           </p>
         </CardContent>

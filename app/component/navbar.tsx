@@ -17,12 +17,11 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
   DropdownMenuItem,
-  DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import {
-  AlignJustify,
   ChevronDown,
   LogOut,
+  NotebookPen,
   User,
   UserCircle,
 } from "lucide-react";
@@ -37,7 +36,7 @@ const Navbar = () => {
 
   const keepLogin = async () => {
     try {
-      const token = localStorage.getItem("dataUser");
+      const token = localStorage.getItem("token");
       if (token) {
         const res = await callAPI.get(`/user/keep-login`, {
           headers: {
@@ -72,20 +71,7 @@ const Navbar = () => {
           <h1 className="text-2zl">Events</h1>
         </Link>
       </div>
-      <div className="hidden lg:block">
-        <NavigationMenu>
-          <Link href="/ticket" className={navigationMenuTriggerStyle()}>
-            Ticket
-          </Link>
-          <Link href="/" className={navigationMenuTriggerStyle()}>
-            About Us
-          </Link>
-          <Link href="/" className={navigationMenuTriggerStyle()}>
-            Service
-          </Link>
-        </NavigationMenu>
-      </div>
-      <div className="hidden lg:block">
+      <div>
         <div className="flex items-center text-sm">
           {!user.email ? (
             <div>
@@ -111,6 +97,10 @@ const Navbar = () => {
                   <User />
                 </DropdownMenuItem>
                 <DropdownMenuItem className="flex justify-between">
+                  <Link href="/createEvent">Regist Event</Link>
+                  <NotebookPen />
+                </DropdownMenuItem>
+                <DropdownMenuItem className="flex justify-between">
                   <span onClick={onLogout}>Sign out</span>
                   <LogOut />
                 </DropdownMenuItem>
@@ -118,35 +108,6 @@ const Navbar = () => {
             </DropdownMenu>
           )}
         </div>
-      </div>
-      <div className="lg:hidden">
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button>
-              <AlignJustify />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuItem>
-              <Link href="/ticket">Ticket</Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Link href="/">About Us</Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Link href="/">Service</Link>
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem className="flex justify-between">
-              <Link href="/account">Account</Link>
-              <User />
-            </DropdownMenuItem>
-            <DropdownMenuItem className="flex justify-between">
-              <span onClick={onLogout}>Sign out</span>
-              <LogOut />
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
       </div>
     </div>
   );

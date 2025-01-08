@@ -20,7 +20,7 @@ const Register: React.FC<IRegisterProps> = (props) => {
   const onRegister = async (
     username: string,
     email: string,
-    password: string
+    password: string,
   ) => {
     try {
       const res = await callAPI.post("/user/register", {
@@ -35,8 +35,8 @@ const Register: React.FC<IRegisterProps> = (props) => {
   };
 
   return (
-    <div className="h-[80vh] flex justify-center items-center">
-      <Card className="px-5">
+    <div className="flex h-[80vh] items-center justify-center">
+      <Card className="lg:px-5">
         <CardHeader>
           <h1 className="text-2xl font-medium">Register now</h1>
         </CardHeader>
@@ -87,7 +87,7 @@ const Register: React.FC<IRegisterProps> = (props) => {
               );
             }}
           </Formik>
-          <p className="text-sm mt-3">
+          <p className="mt-3 text-sm">
             Already have an account? <a href="../login">Login</a>
           </p>
         </CardContent>

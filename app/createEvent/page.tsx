@@ -7,6 +7,7 @@ import { CreateEventSchema } from "./createEventSchema";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { callAPI } from "../config/axios";
+import { redirect } from "next/navigation";
 
 interface ICreateEventValue {
   title: string;
@@ -15,10 +16,10 @@ interface ICreateEventValue {
   img: File | null;
 }
 
-const Register: React.FC = () => {
+const CreateEvent: React.FC = () => {
   const onCreateEvent = async (values: ICreateEventValue): Promise<void> => {
     try {
-      const token = localStorage.getItem("dataUser");
+      const token = localStorage.getItem("token");
       if (token) {
         const formData = new FormData();
         formData.append("title", values.title);
@@ -34,6 +35,7 @@ const Register: React.FC = () => {
         });
         console.log(res.data);
         alert(res.data.message);
+        redirect("/account");
       }
     } catch (error) {
       console.error(error);
@@ -41,8 +43,8 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div className="flex justify-center items-center shadow-lg">
-      <Card className="px-5">
+    <div className="flex h-[80vh] items-center justify-center">
+      <Card className="lg:px-5">
         <CardHeader>
           <h1 className="text-2xl font-medium">Create Ticket</h1>
         </CardHeader>
@@ -95,7 +97,7 @@ const Register: React.FC = () => {
                       id="category"
                       onChange={handleChange}
                       value={values.category}
-                      className="border-2 border-black p-2 rounded-md w-full"
+                      className="w-full rounded-md border-2 border-black p-2"
                     >
                       <option value="" label="Select category" />
                       <option value="Music" label="Music" />
@@ -116,4 +118,4 @@ const Register: React.FC = () => {
   );
 };
 
-export default Register;
+export default CreateEvent;

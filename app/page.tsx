@@ -2,7 +2,7 @@ import TicketPage from "./ticket/page";
 
 const Home = () => {
   return (
-    <div>
+    <div className="lg:mx-[12%]">
       <TicketPage />
     </div>
   );

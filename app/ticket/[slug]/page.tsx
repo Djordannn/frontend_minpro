@@ -45,7 +45,7 @@ const CategoryTicket: React.FunctionComponent<ICategorProps> = ({ params }) => {
   }, []);
 
   return (
-    <div>
+    <div className="lg:mx-[12%]">
       <div>
         <HeroCarousel />
       </div>

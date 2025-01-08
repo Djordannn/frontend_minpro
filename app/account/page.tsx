@@ -112,7 +112,7 @@ const Account = () => {
   }, []);
 
   return (
-    <div>
+    <div className="lg:mx-[12%]">
       <div className="px-[6%] py-8 md:px-[24%] md:py-16">
         <Card>
           <CardHeader className="mb-4">

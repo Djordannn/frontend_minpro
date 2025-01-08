@@ -9,10 +9,6 @@ import { setSignIn } from "@/lib/redux/features/userSlice";
 import { setSignOut } from "@/lib/redux/features/userSlice";
 import { Button } from "@/components/ui/button";
 import {
-  NavigationMenu,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
-import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuTrigger,
@@ -65,7 +61,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="flex items-center justify-between py-5">
+    <div className="mx-[6%] flex items-center justify-between py-5 lg:mx-[12%]">
       <div className="pt-1">
         <Link href="/" className="text-xl font-bold">
           <h1 className="text-2zl">Events</h1>
